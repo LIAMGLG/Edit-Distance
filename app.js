@@ -1,4 +1,4 @@
-/ 获取DOM元素
+// 获取DOM元素
 const sourceChars = document.getElementById('source-chars');
 const targetChars = document.getElementById('target-chars');
 const sourceDropZone = document.getElementById('source-drop');
