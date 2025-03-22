@@ -83,7 +83,9 @@ const updateDPTable = () => {
 // 拖拽相关事件处理
 const handleDragStart = (e) => {
     e.target.style.opacity = '0.4';
+    e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/plain', e.target.textContent);
+    e.dataTransfer.setData('application/x-moz-node', e.target.textContent);
 };
 
 const handleDragEnd = (e) => {
@@ -101,7 +103,8 @@ const handleDragLeave = (e) => {
 
 const handleDrop = (e) => {
     e.preventDefault();
-    const char = e.dataTransfer.getData('text/plain');
+    e.stopPropagation();
+    const char = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('application/x-moz-node');
     const dropZone = e.currentTarget;
     dropZone.classList.remove('active');
 
